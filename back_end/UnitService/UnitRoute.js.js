@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Unit = require("../models/unit");
+const axios = require("axios");
+const PORT = process.env.PORT;
 
 // Add a Unit details using POST method
 // http://localhost:4000/api/unit/add & Request Body
@@ -10,7 +12,6 @@ router.post("/add", (req, res) => {
     .save()
     .then(() => {
       res.status(200).send({ message: "Successfully added Unit" });
-
       console.log(req.body.title, req.body.content);
     })
     .catch(err => {
@@ -18,6 +19,38 @@ router.post("/add", (req, res) => {
       console.log(err);
     });
 });
+
+// Add a Unit details and edit course schema by adding unit object_id into unit array using POST method
+// http://localhost:4000/api/unit/add & Request Body
+// router.post("/add/:course_id", (req, res) => {
+//   const courseData;
+//   const unit = new Unit(req.body);
+//   unit
+//     .save()
+//     .then(() => {
+//       res.status(200).send({ message: "Successfully added Unit" });
+        
+//         try {
+//           const id = req.params.course_id;
+//           axios.get('localhost:'+ PORT +'/api/course/get/'+ id)
+//           .then((course) => {
+//             courseData = course;
+//           })
+//           .catch(err => res.status(400).send({ message: err }))
+
+//           var json = JSON.parse(data);
+//         } catch (error) {
+//           console.error(error)
+//         }
+      
+
+//       console.log(req.body.title, req.body.content);
+//     })
+//     .catch(err => {
+//       res.status(400).send({ message: err });
+//       console.log(err);
+//     });
+// });
 
 // Get Unit details using GET method
 // http://localhost:4000/api/unit/get

@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 var routes = require('./routes');
 
-const PORT =  4000
+const PORT = process.env.PORT;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); app.use(cors());

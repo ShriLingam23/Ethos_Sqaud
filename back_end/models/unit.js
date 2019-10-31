@@ -13,7 +13,11 @@ var UnitSchema = new schema({
     courses:{
         type:schema.Types.ObjectId,
         ref:'Course'
-    }
+    },
+    question:[{
+        type:schema.Types.ObjectId,
+        ref:'question'
+    }]
 })
 
 module.exports = mongoose.model('Unit',UnitSchema)
