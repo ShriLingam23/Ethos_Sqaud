@@ -58,7 +58,14 @@ import { FaWindows } from 'react-icons/fa';
                     if(resJson.data.data && resJson.data.data[0] && resJson.data.data[0].password === password) {
                       loginSucuess = true;
                       alert("login sucuess")
-                      window.location.assign('/')
+                      if(resJson.data.data[0].type === 'student'){
+                        window.location.assign('/student');
+                      }else if(resJson.data.data[0].type === 'moderator'){
+                        window.location.assign('/moderator');
+                      }else{
+                        window.location.assign('/');
+                      }
+                      
                     } else {
                         alert("You have entered an invalid password",password)
                     }
