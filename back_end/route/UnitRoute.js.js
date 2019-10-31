@@ -10,8 +10,6 @@ router.post("/add", (req, res) => {
     .save()
     .then(() => {
       res.status(200).send({ message: "Successfully added Unit" });
-
-      console.log(req.body.title, req.body.content);
     })
     .catch(err => {
       res.status(400).send({ message: err });
@@ -64,5 +62,20 @@ router.delete("/delete/:id", (req, res) => {
     })
     .catch(err => res.status(400).send({ message: err }));
 });
+
+//Get Units based on the Course
+router.route('/custom/get/:id').get(function(req,res){
+  //console.log(req.params.id)
+  Unit.find({ courses: req.params.id }).populate('courses').
+  exec(function (err, units) {
+    if (err) 
+      return handleError(err);
+
+    res.status(200).send({data:units});
+  });
+
+})
+
+
 
 module.exports = router;

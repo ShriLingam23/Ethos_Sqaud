@@ -11,7 +11,6 @@ router.post("/add", (req, res) => {
     .then(() => {
       res.status(200).send({ message: "Successfully added courseStudent" });
 
-      console.log(req.body.email, req.body.password);
     })
     .catch(err => {
       res.status(400).send({ message: err });

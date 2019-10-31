@@ -38,7 +38,7 @@ class AdminLanding extends Component{
                             <div className="row" style={{marginBottom:'-25px'}}>
                                 <div className="col-md-4">
                                     <div className="card mb-4 shadow-sm">
-                                        <h5 className="jumbotron-heading text-info" style={{marginTop:'10px',textAlign:'center'}}>Instructors</h5>
+                                        <h5 className="jumbotron-heading text-info" style={{marginTop:'10px',textAlign:'center'}}>Moderator</h5>
                                         <hr className="md-2"/>
                                         <img src={instructor} className="card-img-top" alt="..." style={{paddingLeft:'7px',paddingRight:'7px'}}/>
                                         <div className="card-body">
@@ -48,7 +48,7 @@ class AdminLanding extends Component{
                                             <button type="button" className="btn btn-sm btn-outline-secondary"><Link to='/staff/view'>View</Link></button>
                                             <button type="button" className="btn btn-sm btn-outline-secondary"><Link to='/staff/add'>Add</Link></button>
                                             </div>
-                                            <small className="text-muted">9 mins</small>
+                                            <small className="text-muted">20 mins</small>
                                         </div>
                                         </div>
                                     </div>

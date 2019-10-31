@@ -35,7 +35,7 @@ class Notice_Row extends Component{
     }
 
     onDelete(){
-        axios.delete('http://localhost:4000/admin/file/uploadfile/'+this.state.image._id)
+        axios.delete('http://localhost:4000/api/admin/file/uploadfile/'+this.state.image._id)
             .then(
                 res => {
                     console.log(res.data)

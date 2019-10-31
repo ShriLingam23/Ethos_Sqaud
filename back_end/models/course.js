@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
 var CourseSchema = new schema({
-    name:{
+    courseName:{
         type:String,
         required:true
     },
-    enrollement_key:{
+    enrollment:{
         type:String,
         required:true
     },
