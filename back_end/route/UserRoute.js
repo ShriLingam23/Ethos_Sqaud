@@ -16,6 +16,19 @@ router.post("/add", (req, res) => {
       console.log(err);
     });
 });
+//Retureve an uerccording to the email
+router.get('/get/:email', (req,res) => {
+  User.find({'email':req.params.email})
+      .then( user  => {
+        if(user){
+          res.status(200).send({"message":"Sucuessfully retrieced the student's data", "data":user});
+        }else{
+          res.status(404).send({"message":"Student not found"})
+        }
+      }).catch( err => {
+          res.status(400).send({err});
+      })
+});
 
 // Get user details using GET method
 // http://localhost:4000/api/user/get

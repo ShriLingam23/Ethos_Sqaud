@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter,Route,Switch} from 'react-router-dom'
+import {BrowserRouter,Route,Switch, Link} from 'react-router-dom'
 import './App.css';
 import './assets/css/Admin.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,6 +19,8 @@ import Course_Edit from './components/Course/Course_Edit';
 
 import Student_View from './components/Student_Admin/Student_View';
 import Student_Profile from './components/Student_Admin/Student_Profile';
+import SignInSide from './signin';
+import SignUp from './signup';
 
 //Moderator Functionalities
 import Moderator_Course_Add from './components/Moderator/Course_Add';
@@ -30,6 +32,7 @@ import Moderator_Course_Unit_View from './components/Moderator/Course_Unit_View'
 import Unit_Add from './components/Moderator/Unit_Add';
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div className="parallax">
@@ -50,6 +53,9 @@ function App() {
 
             <Route exact path='/student/view/' component={Student_View}/>
             <Route exact path='/student/edit/:id' component={Student_Profile}/>
+            
+            <Route exact path='/login' component={SignInSide} />
+            <Route exact path='/signup' component={SignUp} />
 
             {/* Moderator */}
             <Route exact path='/moderator/course/view/' component={Moderator_Course_View}/>
