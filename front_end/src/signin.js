@@ -68,13 +68,14 @@
   }
 
     export default function SignInSide() {
-
+      const [loginSucuess, setLoginSucuess] = useState();
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
       const classes = useStyles();
     
       return (
         <Grid container component="main" className={classes.root}>
+          {loginSucuess && <Link to='/'></Link>}
           <CssBaseline />
           <Grid item xs={false} sm={4} md={7} className={classes.image} />
           <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -118,9 +119,7 @@
                   onClick={()=>{
                     const isValid = handleLogin(email, password);
                     if(isValid){
-                      return (
-                        <Link to="/ "></Link>
-                      );
+                      setLoginSucuess(true);
                     }
                   }}
                   fullWidth

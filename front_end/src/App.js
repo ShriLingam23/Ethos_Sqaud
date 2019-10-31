@@ -21,6 +21,7 @@ import Course_Edit from './components/Course/Course_Edit';
 import Student_View from './components/Student_Admin/Student_View';
 import Student_Profile from './components/Student_Admin/Student_Profile';
 import SignInSide from './signin';
+import SignUp from './signup';
 
 function App() {
   
@@ -46,6 +47,7 @@ function App() {
             <Route exact path='/student/edit/:id' component={Student_Profile}/>
             
             <Route exact path='/login' component={SignInSide} />
+            <Route exact path='/signup' component={SignUp} />
 
           </Switch>  
             

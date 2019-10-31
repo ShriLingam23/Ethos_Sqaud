@@ -96,9 +96,9 @@ class Header extends Component{
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
                          
-                            <form class="form-inline my-2 my-lg-0">
                                 <button class="btn btn-outline-success my-2 my-sm-0"><Link to='/login'>Log In</Link></button>
-                            </form>
+                                <button class="btn btn-outline-success my-2 my-sm-0"><Link to='/signup'>Sign Up</Link></button>
+
                         </div>
                     </nav>
 
