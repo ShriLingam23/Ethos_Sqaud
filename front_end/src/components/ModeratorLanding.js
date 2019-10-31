@@ -37,15 +37,16 @@ class ModeratorLanding extends Component{
                         <div className="container">
 
                             {/* Main Body Start*/}
-                            <div class="container bootstrap snippet" style={{marginLeft:"300px"}}>
+                            <div class="container bootstrap snippet" style={{marginLeft:"180px"}}>
                                 <div class="row">
                                     <div class="col-lg-2 col-sm-6">
                                         <div class="circle-tile ">
                                             <a href="#"><div class="circle-tile-heading dark-blue"><i class="fa fa-book fa-fw fa-3x"></i></div></a>
                                             <div class="circle-tile-content dark-blue">
-                                            <div class="circle-tile-description text-faded"> Users</div>
+                                            <div class="circle-tile-description text-faded"> Course</div>
                                             <div class="circle-tile-number text-faded ">265</div>
-                                                <a class="circle-tile-footer" href="#">More Info<i class="fa fa-chevron-circle-right"></i></a>
+                                                <a class="circle-tile-footer" href="#"></a>
+                                                <button type="button" className="btn btn-sm"><Link to='/moderator/course/view'>More Info<i class="fa fa-chevron-circle-right"></i></Link></button>
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +55,18 @@ class ModeratorLanding extends Component{
                                         <div class="circle-tile ">
                                             <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
                                             <div class="circle-tile-content red">
-                                            <div class="circle-tile-description text-faded"> Users Online </div>
+                                            <div class="circle-tile-description text-faded"> Student </div>
+                                            <div class="circle-tile-number text-faded ">10</div>
+                                                <a class="circle-tile-footer" href="#">More Info<i class="fa fa-chevron-circle-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-sm-6" style={{marginLeft:"100px"}}>
+                                        <div class="circle-tile ">
+                                            <a href="#"><div class="circle-tile-heading orange"><i class="fa fa-user fa-fw fa-3x"></i></div></a>
+                                            <div class="circle-tile-content orange">
+                                            <div class="circle-tile-description text-faded"> Profile </div>
                                             <div class="circle-tile-number text-faded ">10</div>
                                                 <a class="circle-tile-footer" href="#">More Info<i class="fa fa-chevron-circle-right"></i></a>
                                             </div>
