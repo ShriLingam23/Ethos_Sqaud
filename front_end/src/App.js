@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter,Route,Switch} from 'react-router-dom'
+import {BrowserRouter,Route,Switch, Link} from 'react-router-dom'
 import './App.css';
 import './assets/css/Admin.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -20,8 +20,10 @@ import Course_Edit from './components/Course/Course_Edit';
 
 import Student_View from './components/Student_Admin/Student_View';
 import Student_Profile from './components/Student_Admin/Student_Profile';
+import SignInSide from './signin';
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div className="parallax">
@@ -42,6 +44,8 @@ function App() {
 
             <Route exact path='/student/view/' component={Student_View}/>
             <Route exact path='/student/edit/:id' component={Student_Profile}/>
+            
+            <Route exact path='/login' component={SignInSide} />
 
           </Switch>  
             
