@@ -22,14 +22,10 @@ class Header extends Component{
         return(
             <div className="container">
                 <header>
-                    
-                    {/* Nav Bar Start */}
                     <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-                            
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item active">
@@ -50,14 +46,6 @@ class Header extends Component{
                                     Link
                                     </a>
                                 </li>
-                                {/* <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">
-                                    <i class="fa fa-envelope-o">
-                                        <span class="badge badge-warning">11</span>
-                                    </i>
-                                    Disabled
-                                    </a>
-                                </li> */}
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-envelope-o">
@@ -98,13 +86,8 @@ class Header extends Component{
                          
                                 <button class="btn btn-outline-success my-2 my-sm-0"><Link to='/login'>Log In</Link></button>
                                 <button class="btn btn-outline-success my-2 my-sm-0"><Link to='/signup'>Sign Up</Link></button>
-
                         </div>
                     </nav>
-
-{/* Nav bar End */}
-                    
-
                 </header>
             </div>
         )
