@@ -19,7 +19,7 @@ router.post("/add", (req, res) => {
 });
 //Retureve an uerccording to the email
 router.get('/get/:email', (req,res) => {
-  Student.find({"email":req.params.email})
+  User.find({'email':req.params.email})
       .then( user  => {
           res.status(400).send({"message":"Sucuessfully retrieced the student's data", "data":user})
       }).catch( err => {
