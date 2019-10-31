@@ -17,6 +17,15 @@ router.post("/add", (req, res) => {
       console.log(err);
     });
 });
+//Retureve an uerccording to the email
+router.get('/get/:email', (req,res) => {
+  Student.find({"email":req.params.email})
+      .then( user  => {
+          res.status(400).send({"message":"Sucuessfully retrieced the student's data", "data":user})
+      }).catch( err => {
+          res.status(400).send({err});
+      })
+});
 
 // Get user details using GET method
 // http://localhost:4000/api/user/get
