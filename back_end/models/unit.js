@@ -11,7 +11,7 @@ var UnitSchema = new schema({
         required:true
     },
     courses:{
-        type:Schema.Types.ObjectId,
+        type:schema.Types.ObjectId,
         ref:'Course'
     }
 })

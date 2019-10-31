@@ -3,11 +3,11 @@ const schema = mongoose.Schema
 
 var CourseStudentSchema = new schema({
     courses:{
-        type:Schema.Types.ObjectId,
+        type:schema.Types.ObjectId,
         ref:'Course'
     },
     students:{
-        type:Schema.Types.ObjectId,
+        type:schema.Types.ObjectId,
         ref:'User'
     },
     status:{
