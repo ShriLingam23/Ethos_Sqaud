@@ -10,7 +10,6 @@ router.post("/add", (req, res) => {
     .save()
     .then(() => {
       res.status(200).send({ message: "Successfully added User" });
-      console.log(req.body.email, req.body.password);
     })
     .catch(err => {
       res.status(400).send({ message: err });

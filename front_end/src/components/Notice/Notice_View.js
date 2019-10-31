@@ -31,7 +31,7 @@ class Notice_View extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:4000/admin/file/uploadfile')
+        axios.get('http://localhost:4000/api/admin/file/uploadfile')
           .then(
             (res)=>{
               console.log(res)
@@ -51,7 +51,7 @@ class Notice_View extends Component{
               modal: !prevState.modal
             }));
     
-            axios.get('http://localhost:4000/admin/file/uploadfile')
+            axios.get('http://localhost:4000/api/admin/file/uploadfile')
               .then(
                 (res)=>{
                   this.setState({
@@ -82,7 +82,7 @@ class Notice_View extends Component{
             modal: !prevState.modal
           }));
   
-          axios.get('http://localhost:4000/admin/file/uploadfile')
+          axios.get('http://localhost:4000/api/admin/file/uploadfile')
             .then(
               (res)=>{
                 this.setState({
@@ -114,7 +114,7 @@ class Notice_View extends Component{
             return;
         }
         console.log('File Removed', this.state.id);
-        axios.delete('http://localhost:4000/admin/file/uploadfile/'+this.state.id)
+        axios.delete('http://localhost:4000/api/admin/file/uploadfile/'+this.state.id)
             .then(
                 (res)=> console.log(res.data)
             )
@@ -122,7 +122,7 @@ class Notice_View extends Component{
 
     resetNotice(bool){
       console.log(bool)
-      axios.get('http://localhost:4000/admin/file/uploadfile')
+      axios.get('http://localhost:4000/api/admin/file/uploadfile')
           .then(
             (res)=>{
               this.setState({
@@ -152,7 +152,7 @@ class Notice_View extends Component{
                         onprocessfile={this.handlePondFile.bind(this)}
                         onremovefile={this.handleRemove.bind(this)}
                         name={"file"}
-                        server="http://localhost:4000/admin/file/uploadfile"/>
+                        server="http://localhost:4000/api/admin/file/uploadfile"/>
                     </ModalBody>
                     <ModalFooter>
                     <Button color="primary" onClick={this.toggle} name='save'>Save changes</Button>{' '}

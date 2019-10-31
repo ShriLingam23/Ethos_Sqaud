@@ -8,7 +8,8 @@ var routes = require('./routes');
 const PORT =  4000
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()); app.use(cors());
+app.use(bodyParser.json()); 
+app.use(cors());
 
 app.use('/public', express.static(__dirname + '/public'));
 app.use((req, res, next) => {

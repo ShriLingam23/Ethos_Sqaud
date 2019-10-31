@@ -40,18 +40,18 @@ class Header extends Component{
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
-                                    <i class="fa fa-envelope-o">
+                                    <i class="fa fa-book">
                                         <span class="badge badge-danger">11</span>
                                     </i>
-                                    Link
+                                    Courses
                                     </a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-envelope-o">
+                                    <i class="fa fa-users">
                                         <span class="badge badge-primary">11</span>
                                     </i>
-                                        Dropdown
+                                        Moderators
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#">Action</a>
