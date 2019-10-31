@@ -44,7 +44,7 @@
   }));
 
   const handleLogin = (email, password) => {
-
+    let loginSucuess = false;
     if(!email || !password){
         alert("User name or password is empty");
     } else {
@@ -53,29 +53,18 @@
         if(email){
             axios.get('http://localhost:4000/api/user/get/'+ email)
                 .then(resJson => {
-                    console.log(resJson)
-                    if(resJson.data[0].password === password) {
-                        // ReactDOM.render(<StudentLanding/>, document.getElementById('root'));
+                    console.log(resJson.data)
+                    if(resJson.data.data && resJson.data.data[0] && resJson.data.data[0].password === password) {
+                      loginSucuess = true;
+                      alert("login sucuess")
                     } else {
-                        alert("You have entered an invalid password",this.state.password)
+                        alert("You have entered an invalid password",password)
                     }
                 })
                 .catch(err => console.log(err));
-        } else if(email.startsWith("S") || email.startsWith("s")){
-            console.log("Student");
-        } else if(email.startsWith("I") || email.startsWith("i")){
-            axios.get('http://localhost:4000/api/instructor/getByReg/'+email)
-                .then(resJson => {
-                    if(resJson.data[0].password == password) {
-                    } else {
-                      this.setState({loginSucuess:true});
-                        alert("You have entered an invalid password",this.state.password)
-                    }
-                })
-                .catch(err => console.log(err))
-        } else {
-        }
+        } 
     }
+    return loginSucuess;
   }
 
     export default function SignInSide() {
@@ -126,7 +115,14 @@
                   label="Remember me"
                 />
                 <Button
-                  onClick={()=>handleLogin(email, password)}
+                  onClick={()=>{
+                    const isValid = handleLogin(email, password);
+                    if(isValid){
+                      return (
+                        <Link to="/ "></Link>
+                      );
+                    }
+                  }}
                   fullWidth
                   variant="contained"
                   color="primary"
