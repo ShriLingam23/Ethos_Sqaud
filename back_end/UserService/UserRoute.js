@@ -21,7 +21,7 @@ router.post("/add", (req, res) => {
 router.get('/get/:email', (req,res) => {
   User.find({'email':req.params.email})
       .then( user  => {
-          res.status(400).send({"message":"Sucuessfully retrieced the student's data", "data":user})
+          res.status(200).send({"message":"Sucuessfully retrieced the student's data", "data":user})
       }).catch( err => {
           res.status(400).send({err});
       })
