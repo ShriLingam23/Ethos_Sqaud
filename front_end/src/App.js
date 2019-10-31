@@ -1,16 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import './App.css';
-import SignInSide from './signin';
-import SignUp from './signup';
-import HomePage from './homePage';
+import './assets/css/Admin.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import Header from './components/Header'
+import AdminLanding from './components/AdminLanding'
+
+// import StaffRegister from './components/Staff/Staff_Register'
+// import Staff_View from './components/Staff/Staff_View';
+// import Staff_Edit from './components/Staff/Staff_Edit';
+
+// import CourseRegister from './components/Course/Course_Register';
+// import Course_View from './components/Course/Course_View';
+// import Course_Edit from './components/Course/Course_Edit';
+
+// import Student_View from './components/Student_Admin/Student_View';
+// import Student_Profile from './components/Student_Admin/Student_Profile';
 
 function App() {
   return (
-    <div className="App">
-      {/* <SignInSide /> */}
-      {/* <SignUp />  */}
-    </div>
+    <BrowserRouter>
+      <div className="parallax">
+        <Header/>
+          
+          <Switch>
+            <Route exact path='/' component={AdminLanding}/>
+            
+            {/* <Route exact path='/staff/add' component={StaffRegister}/>
+            <Route exact path='/staff/view' component={Staff_View}/>
+            <Route exact path='/staff/edit/:id' component={Staff_Edit}/>
+
+            <Route exact path='/course/add' component={CourseRegister}/>
+            <Route exact path='/course/view' component={Course_View}/>
+            <Route exact path='/course/edit/:id' component={Course_Edit}/>
+
+            <Route exact path='/student/view/' component={Student_View}/>
+            <Route exact path='/student/edit/:id' component={Student_Profile}/> */}
+
+          </Switch>  
+            
+          
+        
+      </div>
+    </BrowserRouter>
   );
 }
 
