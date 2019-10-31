@@ -13,6 +13,7 @@
   import Typography from '@material-ui/core/Typography';
   import { makeStyles } from '@material-ui/core/styles';
   import StudentLanding from './components/StudentLanding';
+import { FaWindows } from 'react-icons/fa';
 
   const useStyles = makeStyles(theme => ({
     root: {
@@ -57,6 +58,14 @@
                     if(resJson.data.data && resJson.data.data[0] && resJson.data.data[0].password === password) {
                       loginSucuess = true;
                       alert("login sucuess")
+                      if(resJson.data.data[0].type === 'student'){
+                        window.location.assign('/student');
+                      }else if(resJson.data.data[0].type === 'moderator'){
+                        window.location.assign('/moderator');
+                      }else{
+                        window.location.assign('/');
+                      }
+                      
                     } else {
                         alert("You have entered an invalid password",password)
                     }
