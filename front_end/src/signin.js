@@ -1,4 +1,4 @@
-  import React from 'react';
+  import React, { useState} from 'react';
   import {Link} from 'react-router-dom'
   import axios from 'axios';
   import Avatar from '@material-ui/core/Avatar';
@@ -42,11 +42,46 @@
       margin: theme.spacing(3, 0, 2),
     },
   }));
-  
+
+  const handleLogin = (email, password) => {
+
+    if(!email || !password){
+        alert("User name or password is empty");
+    } else {
+        window.sessionStorage.setItem('email', email);
+
+        if(email){
+            axios.get('http://localhost:4000/api/user/get/'+ email)
+                .then(resJson => {
+                    console.log(resJson)
+                    if(resJson.data[0].password === password) {
+                        // ReactDOM.render(<StudentLanding/>, document.getElementById('root'));
+                    } else {
+                        alert("You have entered an invalid password",this.state.password)
+                    }
+                })
+                .catch(err => console.log(err));
+        } else if(email.startsWith("S") || email.startsWith("s")){
+            console.log("Student");
+        } else if(email.startsWith("I") || email.startsWith("i")){
+            axios.get('http://localhost:4000/api/instructor/getByReg/'+email)
+                .then(resJson => {
+                    if(resJson.data[0].password == password) {
+                    } else {
+                      this.setState({loginSucuess:true});
+                        alert("You have entered an invalid password",this.state.password)
+                    }
+                })
+                .catch(err => console.log(err))
+        } else {
+        }
+    }
+  }
 
     export default function SignInSide() {
 
-      
+      const [email, setEmail] = useState('');
+      const [password, setPassword] = useState('');
       const classes = useStyles();
     
       return (
@@ -72,6 +107,7 @@
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  onChange={(e)=>{setEmail(e.target.value)}}
                 />
                 <TextField
                   variant="outlined"
@@ -83,13 +119,14 @@
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={(e)=>{setPassword(e.target.value)}}
                 />
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
                 />
                 <Button
-                  type="submit"
+                  onClick={()=>handleLogin(email, password)}
                   fullWidth
                   variant="contained"
                   color="primary"
