@@ -81,9 +81,10 @@ class Staff_View extends Component{
 
     componentDidMount(){
 
-        axios.get('http://localhost:4000/admin/staff/')
+        axios.get('http://localhost:4000/api/user/get')
             .then(
                 staffs=>{
+                    console.log(staffs)
                     this.setState({staffs:staffs.data,filteredStaff:staffs.data})
 
                     let SeniorLecturer =0;

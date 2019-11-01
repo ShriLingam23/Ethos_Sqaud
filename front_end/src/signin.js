@@ -1,19 +1,21 @@
   import React, { useState} from 'react';
-  import {Link} from 'react-router-dom'
-  import axios from 'axios';
-  import Avatar from '@material-ui/core/Avatar';
-  import Button from '@material-ui/core/Button';
-  import CssBaseline from '@material-ui/core/CssBaseline';
-  import TextField from '@material-ui/core/TextField';
-  import FormControlLabel from '@material-ui/core/FormControlLabel';
-  import Checkbox from '@material-ui/core/Checkbox';
-  import Paper from '@material-ui/core/Paper';
-  import Box from '@material-ui/core/Box';
-  import Grid from '@material-ui/core/Grid';
-  import Typography from '@material-ui/core/Typography';
-  import { makeStyles } from '@material-ui/core/styles';
-  import StudentLanding from './components/StudentLanding';
+import {Link} from 'react-router-dom'
+import axios from 'axios';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import StudentLanding from './components/StudentLanding';
 import { FaWindows } from 'react-icons/fa';
+
+import Swal from 'sweetalert2'
 
   const useStyles = makeStyles(theme => ({
     root: {
@@ -57,12 +59,27 @@ import { FaWindows } from 'react-icons/fa';
                     console.log(resJson.data)
                     if(resJson.data.data && resJson.data.data[0] && resJson.data.data[0].password === password) {
                       loginSucuess = true;
-                      alert("login sucuess")
+                      // alert("login sucuess")
                       if(resJson.data.data[0].type === 'student'){
+                        Swal.fire(
+                          'Good job!',
+                          'Student Successfully LoggedIn!',
+                          'success'
+                        )
                         window.location.assign('/student');
                       }else if(resJson.data.data[0].type === 'moderator'){
+                        Swal.fire(
+                          'Good job!',
+                          'Moderator Successfully LoggedIn!',
+                          'success'
+                        )
                         window.location.assign('/moderator');
                       }else{
+                        Swal.fire(
+                          'Good job!',
+                          'Admin Successfully LoggedIn!',
+                          'success'
+                        )
                         window.location.assign('/');
                       }
                       
@@ -95,7 +112,7 @@ import { FaWindows } from 'react-icons/fa';
               <Typography component="h1" variant="h5">
                 Sign in
               </Typography>
-              <form className={classes.form} noValidate>
+              <form className={classes.form} noValidate >
                 <TextField
                   variant="outlined"
                   margin="normal"
