@@ -21,12 +21,7 @@ import Swal from 'sweetalert2'
     root: {
       height: '100vh',
     },
-    image: {
-      backgroundImage: 'url(https://source.unsplash.com/random)',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    },
+    
     paper: {
       margin: theme.spacing(8, 4),
       display: 'flex',
@@ -82,10 +77,21 @@ import Swal from 'sweetalert2'
                       }
                       
                     } else {
-                        alert("You have entered an invalid password",password)
+                      Swal.fire(
+                        'Invalid password!',
+                        'You entered an incoreect password!',
+                        'error'
+                      )
                     }
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                  Swal.fire(
+                    'Something went worng!',
+                    'Something went wrong!',
+                    'error'
+                  )
+                  console.log(err)
+                });
         } 
     }
     return loginSucuess;
