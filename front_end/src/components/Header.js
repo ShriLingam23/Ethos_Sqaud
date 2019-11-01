@@ -20,7 +20,6 @@ class Header extends Component{
 
     render(){
         return(
-            <div className="container">
                 <header>
                     <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,7 +89,6 @@ class Header extends Component{
                         </div>
                     </nav>
                 </header>
-            </div>
         )
     }
 
