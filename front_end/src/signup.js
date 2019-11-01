@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -36,14 +37,14 @@ const useStyles = makeStyles(theme => ({
 
 const handleSignUp = (name, email, password, phone, gender='male', type='student') => {
   const user = {name, email, password, phone, gender, type}
-  fetch('http://localhost:4000/api/user/add', {
-    method: 'POST',
-    body: JSON.stringify(user),
-  }).then((response) => {
-    alert('Succuessfully added')
-  }).catch(err=>{
-    alert('Something went worng');
-  })
+    axios.post('http://localhost:4000/api/user/add',user)
+            .then(
+                res=>{
+                    console.log(res.data)
+                        window.location.assign('/login');
+                },
+                err=>console.log(err)
+            )
 
 }
 
