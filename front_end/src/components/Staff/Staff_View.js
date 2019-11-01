@@ -87,52 +87,42 @@ class Staff_View extends Component{
                     console.log(staffs)
                     this.setState({staffs:staffs.data,filteredStaff:staffs.data})
 
-                    let SeniorLecturer =0;
-                    let Lecturer =0;
-                    let Instructor =0;
-                    let LabAssistant =0;
+                    let Student =0;
+                    let Moderator =0;
                     let Admin =0;
 
                     staffs.data.forEach((staff)=>{
-                        console.log(staff.profession)
-                        switch(staff.profession){
-                            case 'Senior Lecturer':
-                                SeniorLecturer=+1;
+                        console.log(staff.type)
+                        switch(staff.type){
+                            case 'Student':
+                                Student+=1;
                                 break;
-                            case 'Lecturer':
-                                Lecturer=+1;
-                                break;
-                            case 'Instructor':
-                                Instructor=+1;
-                                break;
-                            case 'Lab Assistant':
-                                LabAssistant=+1;
+                            case 'Moderator':
+                                Moderator+=1;
                                 break;
                             case 'Admin':
-                                Admin=+1;
+                                Admin+=1;
                                 break;
                         }
                     })
-                    console.log(SeniorLecturer,Lecturer,LabAssistant,Instructor,Admin)
+                    console.log(Student,Moderator,Admin);
 
                     const data = [
-                        { name: 'Admin', value: Admin },
-                        { name: 'Senior Lecturer', value: SeniorLecturer },
-                        { name: 'Lecturer', value: Lecturer },
-                        { name: 'Instructor', value: Instructor },
-                        { name: 'Lab Assistant', value: LabAssistant }
+                        { name: 'Student', value: Student },
+                        { name: 'Moderator', value: Moderator },
+                        { name: 'Admin', value: Admin }
                     ]
 
                     this.setState({data:data})
                     
-                    console.log(data)
+                    //console.log(data)
 
                 }
             )
     }
 
     componentWillUpdate(){
-        axios.get('http://localhost:4000/admin/staff/')
+        axios.get('http://localhost:4000/api/user/get')
             .then(
                 staffs=>{
                     this.setState({staffs:staffs.data})            
@@ -149,11 +139,11 @@ class Staff_View extends Component{
                     <table className="table table-hover table-responsive-md table-striped" style={{marginBottom:'5px'}}>
                         <thead style={{backgroundColor:'#bdbdbd'}}>
                             <tr>
-                                <th scope="col">Staff Name</th>
+                                <th scope="col">User Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Profession</th>
+                                <th scope="col">Gender</th>
                                 <th scope="col">Contact Number</th>
-                                <th scope="col">Location</th>
+                                <th scope="col">Type</th>
                                 <th scope="col" colSpan='2'></th>
                             </tr>
                         </thead>
@@ -214,47 +204,32 @@ class Staff_View extends Component{
         if(index!=0){
 
             let filteredStaff= this.state.staffs.filter(staff=>{
-                console.log(staff.profession)
-                switch(staff.profession){
-                    case 'Admin':
+                console.log(staff.type)
+                switch(staff.type){
+                    case 'Student':
                         if(index==1)
                             return staff;
 
                         break;
 
-                    case 'Senior Lecturer':
+                    case 'Moderator':
                             if(index==2)
                                 return staff;
     
                             break;
 
-                    case 'Lecturer':
+                    case 'Admin':
                             if(index==3){
                                 // console.log('Lecturer')
                                 return staff
                             }
-                            console.log('Lecturer')
+                            console.log('Admin')
                             break;
-
-                    case 'Instructor':
-                            if(index==4)
-                                return staff;
-    
-                            break;
-
-                    case 'Lab Assistant':
-                            if(index==5)
-                                return staff;
-    
-                            break;
-                }
-                
+                }                
             })
             console.log(filteredStaff)
             this.setState({filteredStaff:filteredStaff})
-
         }
-
     }
 
     checkData(){
@@ -281,11 +256,9 @@ class Staff_View extends Component{
                         <div className="col-md-8">
                             <select className="form-control" id="staff">
                                 <option>Choose a Profession...</option>
+                                <option>Student</option>
+                                <option>Moderator Lecturer</option>
                                 <option>Admin</option>
-                                <option>Senior Lecturer</option>
-                                <option>Lecturer</option>
-                                <option>Instructor</option>
-                                <option>Lab Assistant</option>
                             </select>
                         </div>
                         <div className="col-md-2">

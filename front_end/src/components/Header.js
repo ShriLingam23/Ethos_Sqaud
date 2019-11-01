@@ -11,7 +11,7 @@ class Header extends Component{
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-        this.state = { collapse: false };
+        this.state = { collapse: false, showLogOut:true };
     }
 
     toggle() {
@@ -84,8 +84,9 @@ class Header extends Component{
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
                          
-                                <button class="btn btn-outline-success my-2 my-sm-0"><Link to='/login'>Log In</Link></button>
-                                <button class="btn btn-outline-success my-2 my-sm-0"><Link to='/signup'>Sign Up</Link></button>
+                                {!window.localStorage.authenticated&&<button class="btn btn-outline-success my-2 my-sm-0"><Link to='/login'>Log In</Link></button>}
+                                {!window.localStorage.authenticated&&<button class="btn btn-outline-success my-2 my-sm-0"><Link to='/signup'>Sign Up</Link></button>}
+                                {this.state.showLogOut&&<button onClick={()=>{this.setState({showLogOut:false});window.localStorage.removeItem('authenticated')}} class="btn btn-outline-success my-2 my-sm-0">Log out</button>}
                         </div>
                     </nav>
                 </header>
