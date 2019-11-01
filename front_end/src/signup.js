@@ -10,6 +10,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 
+import Swal from 'sweetalert2'
+
+import {IoIosPerson} from "react-icons/io"
+
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
@@ -41,7 +45,12 @@ const handleSignUp = (name, email, password, phone, gender='male', type='student
             .then(
                 res=>{
                     console.log(res.data)
-                        window.location.assign('/login');
+                    Swal.fire(
+                      'Good job!',
+                      'Notice Successfully published!',
+                      'success'
+                    )
+                    window.location.assign('/login');
                 },
                 err=>console.log(err)
             )
@@ -59,13 +68,17 @@ export default function SignUp() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+
+      <div class="card" style={{width:'28rem',height:'560px',paddingTop:'-40px'}}>
+      <div class="card-body">
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
+          <IoIosPerson size="50px"/>
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate >
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -143,6 +156,8 @@ export default function SignUp() {
       </div>
       <Box mt={5}>
       </Box>
+      </div>
+      </div>
     </Container>
   );
 }
