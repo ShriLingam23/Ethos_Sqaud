@@ -17,7 +17,7 @@ router.post("/add", (req, res) => {
     });
 });
 //Retureve an uerccording to the email
-router.get('/get/:email', (req,res) => {
+router.get('/get/email/:email', (req,res) => {
   User.find({'email':req.params.email})
       .then( user  => {
         if(user){
@@ -46,6 +46,7 @@ router.get("/get", (req, res) => {
 // Get an user details using GET method
 // http://localhost:4000/api/user/get/ + id
 router.get("/get/:id", (req, res) => {
+  console.log(req.params.id)
   User.findById(req.params.id)
     .then(user => {
         res
@@ -71,7 +72,7 @@ router.get("/getByType/:type", (req, res) => {
 
 // Update an user details using PUT method
 // http://localhost:4000/api/user/update + id
-router.put("/update/:id", (req, res) => {
+router.post("/update/:id", (req, res) => {
   User.updateOne({ _id: req.params.id }, req.body)
     .then(user =>
       res.status(200).send({ message: "Successfully updated", data: user })

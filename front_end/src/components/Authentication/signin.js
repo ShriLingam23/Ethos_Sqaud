@@ -1,4 +1,4 @@
-  import React, { useState} from 'react';
+import React, { useState} from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import Avatar from '@material-ui/core/Avatar';
@@ -12,7 +12,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import StudentLanding from './components/StudentLanding';
+import StudentLanding from '../StudentLanding';
 import { FaWindows } from 'react-icons/fa';
 
 import Swal from 'sweetalert2'
@@ -51,15 +51,13 @@ import Swal from 'sweetalert2'
     if(!email || !password){
         alert("User name or password is empty");
     } else {
-        window.sessionStorage.setItem('email', email);
-
         if(email){
-            axios.get('http://localhost:4000/api/user/get/'+ email)
+            axios.get('http://localhost:4000/api/user/get/email/'+ email)
                 .then(resJson => {
                     console.log(resJson.data)
                     if(resJson.data.data && resJson.data.data[0] && resJson.data.data[0].password === password) {
                       loginSucuess = true;
-                      // alert("login sucuess")
+                      window.localStorage.setItem('authenticated', true);
                       if(resJson.data.data[0].type === 'student'){
                         Swal.fire(
                           'Good job!',

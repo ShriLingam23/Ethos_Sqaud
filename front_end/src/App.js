@@ -19,8 +19,8 @@ import Course_Edit from './components/Course/Course_Edit';
 
 import Student_View from './components/Student_Admin/Student_View';
 import Student_Profile from './components/Student_Admin/Student_Profile';
-import SignInSide from './signin';
-import SignUp from './signup';
+import SignInSide from './components/Authentication/signin';
+import SignUp from './components/Authentication/signup';
 
 //Moderator Functionalities
 import Moderator_Course_Add from './components/Moderator/Course_Add';

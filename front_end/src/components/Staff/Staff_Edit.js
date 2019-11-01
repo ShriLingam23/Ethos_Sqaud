@@ -20,15 +20,12 @@ class Staff_Edit extends Component{
         
         this.state = { 
             visible: false,
-            fullName:'',
+            name:'',
             email:'',
             password:'',
-            profession:'',
-            contactNum:'',
-            location:'',
-            response:'',
-            pending:false
-
+            phone:'',
+            gender:'',
+            type:''
         };
 
         this.onFormSubmit= this.onFormSubmit.bind(this);
@@ -42,17 +39,17 @@ class Staff_Edit extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:4000/admin/staff/edit/'+this.props.match.params.id)
+        axios.get('http://localhost:4000/api/user/get/'+this.props.match.params.id)
             .then(
                 staff =>{
+                    console.log(staff)
                     this.setState({
-                        fullName:staff.data.fullName,
+                        name:staff.data.name,
                         email:staff.data.email,
                         password:staff.data.password,
-                        profession:staff.data.profession,
-                        contactNum:staff.data.contactNum,
-                        location:staff.data.location,
-                        response:staff.data.response
+                        phone:staff.data.phone,
+                        gender:staff.data.gender,
+                        type:staff.data.type
                     })
                 }
             )
@@ -75,7 +72,7 @@ class Staff_Edit extends Component{
         else{
             return(
                 <div className="col-md-8 py-5 border">
-                    <h4 className="pb-4">Please Fill Staff Member details</h4>
+                    <h4 className="pb-4">Please Edit User details</h4>
                     <form id='staffForm' onSubmit={this.onFormSubmit}>
                         <div className="form-row">
                             <div className="input-group form-group col-md-6">
@@ -83,13 +80,13 @@ class Staff_Edit extends Component{
                                 <div className="input-group-text"><MdPerson/></div>
                             </div>
                             <input 
-                                name="fullName" 
+                                name="name" 
                                 placeholder="Full Name" 
                                 className="form-control" 
                                 type="text"
-                                pattern="[A-Za-z ]{1,}"
+                                // pattern="[A-Za-z ]{1,}"
                                 onChange={this.onValueChange}
-                                value={this.state.fullName} />
+                                value={this.state.name} />
                             </div>
                         <div className="input-group form-group col-md-6">
                             <div className="input-group-prepend">
@@ -100,7 +97,7 @@ class Staff_Edit extends Component{
                                 placeholder="Email"
                                 className="form-control"
                                 type="email"
-                                pattern="/^[a-z0-9_]{*}+@[a-z0-9]{*}+.[a-z]{2,4}$/"
+                                // pattern="/^[a-z0-9_]{*}+@[a-z0-9]{*}+.[a-z]{2,4}$/"
                                 title="Email field not matched"
                                 onChange={this.onValueChange}
                                 value={this.state.email} />
@@ -124,13 +121,11 @@ class Staff_Edit extends Component{
                                 <div className="input-group-prepend">
                                     <div className="input-group-text"><MdCardTravel/></div>
                                 </div>   
-                                <select name="profession" className="form-control" onChange={this.onValueChange} value={this.state.profession}>
-                                    <option>Choose Profession ...</option>
+                                <select name="type" className="form-control" onChange={this.onValueChange} value={this.state.type}>
+                                    <option>Choose Type ...</option>
                                     <option> Admin</option>
-                                    <option> Senior Lecturer</option>
-                                    <option> Lecturer</option>
-                                    <option> Instructor</option>
-                                    <option> Lab Assistant</option>
+                                    <option> Student</option>
+                                    <option> Moderator</option>
                                 </select>
                             </div>
                         </div>
@@ -140,41 +135,32 @@ class Staff_Edit extends Component{
                                     <div className="input-group-text"><MdPhone/></div>
                                 </div>
                                 <input 
-                                    name="contactNum" 
+                                    name="phone" 
                                     placeholder="Contact No." 
                                     className="form-control" 
                                     required="required" 
                                     type="tel" 
-                                    pattern="[0-9]{10}"
+                                    // pattern="[0-9]{10}"
                                     title="Contact Number can only contain 10 digits"
                                     onChange={this.onValueChange}
-                                    value={this.state.contactNum}/>
+                                    value={this.state.phone}/>
                             </div>
                             <div className="input-group form-group col-md-6">
-                                <div className=" input-group-prepend">
-                                    <div className="input-group-text"><MdPlace/></div>
+                                <div className="input-group-prepend">
+                                    <div className="input-group-text"><MdPhone/></div>
                                 </div>
-                            <select name="location" className=" form-control" onChange={this.onValueChange} value={this.state.location}>
-                                <option selected>Choose Location ...</option>
-                                <option> Colombo - Metro</option>
-                                <option> Malabe</option>
-                                <option> Kandy</option>
-                                <option> Jaffna</option>
-                                <option> Matara</option>
-                            </select>
+                                <input 
+                                    name="gender" 
+                                    placeholder="Gender" 
+                                    className="form-control" 
+                                    required="required" 
+                                    type="text" 
+                                    // pattern="[A-Za-z ]{1,}"
+                                    onChange={this.onValueChange}
+                                    value={this.state.gender}/>
                             </div>
                         </div>
-                        <div className="form-row">
-                            <div className="form-group col-md-12">
-                                    <textarea
-                                        name="response" 
-                                        cols="40" rows="5" 
-                                        className="form-control" 
-                                        placeholder="Responsibilities"
-                                        onChange={this.onValueChange}
-                                        value={this.state.response}></textarea>
-                            </div>
-                        </div>
+                        
                         <div className="form-row">
                             <div className="form-group">
                                 <div className="form-group">
@@ -221,40 +207,27 @@ class Staff_Edit extends Component{
     onFormSubmit(e){
         e.preventDefault();
 
-        const fullName = this.state.fullName;
+        const name = this.state.name;
         const email = this.state.email;
         const password = this.state.password;
-        const profession = this.state.profession;
-        const contactNum = this.state.contactNum;
-        const location = this.state.location;
-        const response = this.state.response;
-        console.log(fullName,email,password,profession,contactNum,location,response)
+        const type = this.state.type;
+        const phone = this.state.phone;
+        const gender = this.state.gender;
+        console.log(name,email,password,type,phone,gender)
 
         const staff={
-            fullName,
+            name,
             email,
             password,
-            profession,
-            contactNum,
-            location,
-            response
+            type,
+            phone,
+            gender
         }
 
-        axios.post('http://localhost:4000/admin/staff/update/'+this.props.match.params.id,staff)
+        axios.post('http://localhost:4000/api/user/update/'+this.props.match.params.id,staff)
             .then(
                 res=>{
                     console.log(res.data)
-                    // document.getElementById('staffForm').reset()
-                    this.setState({
-                        visible:true,
-                        fullName:'',
-                        email:'',
-                        password:'',
-                        profession:'',
-                        contactNum:'',
-                        location:'',
-                        response:''});
-
                 },
                 err=>console.log(err)
             )
